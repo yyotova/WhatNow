@@ -1,0 +1,9 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<a href="{% url 'tasks:index' %}">Home</a>
+<h1><a href="{% url 'tasks:reviews:list' %}">Reviews</a></h1>
+
+{% block content %} {% endblock %}
