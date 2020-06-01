@@ -3,12 +3,12 @@ from django.contrib import admin
 from tasks.models import *
 
 
-@admin.register(Projects)
+@admin.register(Project)
 class ProjectsAdmin(admin.ModelAdmin):
     list_display = ('title', 'date_start', 'date_end', 'description')
 
 
-@admin.register(Tasks)
+@admin.register(Task)
 class TasksAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_project', 'date_start', 'date_end', 'status', 'description')
 
@@ -17,7 +17,7 @@ class TasksAdmin(admin.ModelAdmin):
     get_project.short_description = 'Project'
 
 
-@admin.register(Reviews)
+@admin.register(Review)
 class ReviewsAdmin(admin.ModelAdmin):
     list_display = ('get_task', 'get_user', 'review', 'date')
 
@@ -31,7 +31,7 @@ class ReviewsAdmin(admin.ModelAdmin):
     get_task.short_description = 'task'
 
 
-@admin.register(Comments)
+@admin.register(Comment)
 class CommentsAdmin(admin.ModelAdmin):
     list_display = ('description', 'date', 'get_task', 'get_user')
 

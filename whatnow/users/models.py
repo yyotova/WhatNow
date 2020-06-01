@@ -5,7 +5,7 @@ class UsersType(models.Model):
     user_type = models.CharField(max_length=250)
 
 
-class Users(models.Model):
+class User(models.Model):
     username = models.CharField(max_length=250)
     password = models.CharField(max_length=250)
     email = models.CharField(max_length=250)
@@ -13,7 +13,7 @@ class Users(models.Model):
     phone = models.CharField(max_length=250)
 
 
-class UsersTasks(models.Model):
-    user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
-    task_id = models.ForeignKey('tasks.Tasks', on_delete=models.CASCADE)
+class UsersTask(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    task_id = models.ForeignKey('tasks.Task', on_delete=models.CASCADE)
     opened = models.BooleanField(default=False)

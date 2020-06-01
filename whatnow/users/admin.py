@@ -3,7 +3,7 @@ from django.contrib import admin
 from users.models import *
 
 
-@admin.register(Users)
+@admin.register(User)
 class UsersAdmin(admin.ModelAdmin):
     list_display = ('username', 'password', 'email', 'get_user_type', 'phone')
 
@@ -18,7 +18,7 @@ class UsersTypeAdmin(admin.ModelAdmin):
     list_display = ('user_type',)
 
 
-@admin.register(UsersTasks)
+@admin.register(UsersTask)
 class UsersTasksAdmin(admin.ModelAdmin):
     list_display = ('get_user', 'get_task')
 
