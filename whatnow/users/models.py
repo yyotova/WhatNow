@@ -9,7 +9,7 @@ class Users(models.Model):
     username = models.CharField(max_length=250)
     password = models.CharField(max_length=250)
     email = models.CharField(max_length=250)
-    user_type = models.ForeignKey(UsersType, on_delete=models.CASCADE)
+    user_type = models.ForeignKey(UsersType, default=1, on_delete=models.CASCADE)
     phone = models.CharField(max_length=250)
 
 
