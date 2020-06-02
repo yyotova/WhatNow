@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Blippo', fantasy;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 86%;
+    background-image: url("work.jpg");
+    background-size: 1060px 480px;
+    backface-visibility: inherit;
+}
+
+header {
+    padding: 1rem;
+    background-color: rgb(0, 255, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navigation {
+    margin-left: 10rem;
+    font-size: 25px;
+    color: #40614B
+}
+
+.logo {
+    font-family: 'OCR A Std', monospace;
+    font-size: 28px;
+    background-image: linear-gradient(-100deg, rgb(105, 202, 105) 0%, rgb(33, 124, 15) 100%);
+    border: 3px ridge green;
+    color: #F8FF0B;
+    border-radius: 1rem;
+    padding-left: .3rem;
+    padding-right: .3rem;
+}
+
+ul {
+    padding: 2rem;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #40614B
+}

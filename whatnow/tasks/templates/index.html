@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <h1>Welcome to Hackademy!</h1>
 
@@ -5,3 +6,29 @@
   <li><a href="{% url 'tasks:tasks:list' %}">Courses</a></li>
 
 </ul>
+=======
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WhatNow</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <header>
+            <strong class="logo">WhatNow</strong>
+            <p class="navigation"><b>Manage your tasks</b></p>
+        </header>
+
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'tasks:tasks:list' %}">Your Tasks</a></li> 
+                <li><a href="{% url 'tasks:projects:list' %}">All Projects</a></li> 
+                <li><a href="{% url 'tasks:reviews:list' %}">Reviews</a></li>   
+            </ul>
+        </div>
+    </body>
+</html>
+
+
+>>>>>>> 48c809c238835abc03aae81632bf357cdc91a7da

@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-=======
 {% load static %}
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 
 <a href="{% url 'tasks:index' %}">Home</a>
-<h1><a href="{% url 'tasks:tasks:list' %}">Tasks</a></h1>
->>>>>>> 48c809c238835abc03aae81632bf357cdc91a7da
+<h1><a href="{% url 'tasks:projects:list' %}">Projects</a></h1>
 
 {% block content %} {% endblock %}
