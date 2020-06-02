@@ -33,5 +33,4 @@ urlpatterns = [
     path('projects/', include((projects_patterns, 'projects'))),
     path('reviews/', include((reviews_patterns, 'reviews'))),
     path('comments/', include((comments_patterns, 'comments')))
-       
 ]

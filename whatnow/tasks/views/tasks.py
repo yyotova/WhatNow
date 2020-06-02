@@ -12,7 +12,10 @@ def list(request):
 
 def detail(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
-    return render(request, 'tasks/detail.html', {'task': task, 'comments': Comments.objects.filter(task_id=task_id).all()})
+    task.status = 'in progress'
+    task.save()
+    comments = Comments.objects.filter(task_id=task_id).all()
+    return render(request, 'tasks/detail.html', {'task': task, 'comments': comments})
 
 
 class TaskCreateView(CreateView):
