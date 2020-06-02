@@ -1,3 +1,13 @@
+{% load static %}
+<head>
+
+    <title>Your Tasks</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+ <header>
+            <strong class="logo">WhatNow</strong>
+        </header>
+<div class="container">
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
@@ -6,3 +16,4 @@
 <small>
 	Need An Account? <a href="{% url 'register' %}">Sign Up Now</a>
 </small>
+</div>

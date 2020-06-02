@@ -31,7 +31,6 @@ comments_patterns = [
 urlpatterns = [
     path('', index, name='index'),
     path('tasks/', include((tasks_patterns, 'tasks'))),
-
     path('projects/', include((projects_patterns, 'projects'))),
     path('reviews/', include((reviews_patterns, 'reviews'))),
     path('comments/', include((comments_patterns, 'comments')))
