@@ -1,0 +1,27 @@
+{% extends "tasks/base.html" %} {% block content %}
+
+{% if tasks %}
+<table>
+   <tr>
+   	<th>title</th>
+   	<th>description</th>
+   	<th>start_date</th>
+   	<th>due_date</th>
+    <th>project</th>
+    <th>status</th>
+   </tr>
+  {% for task in tasks %}
+  <tr>
+  <td>{{ task.task_id.title }}</td>  
+  <td>{{ task.task_id.description }}</td>
+  <td>{{ task.task_id.date_start }}</td>
+  <td>{{ task.task_id.date_end }}</td>
+  <td>{{ task.task_id.project_id.title }}</td>
+  <td>{{ task.task_id.status }}</td>
+  
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p><strong>No tasks yet.</strong></p>
+{% endif %} {% endblock %}
