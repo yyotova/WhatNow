@@ -1,7 +1,14 @@
-<h2>Add new task</h2>
+{% extends 'tasks/base.html' %} {% block content %}
 
-<form method="POST">
+<div class="container" id="task">
 
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" name="Save">
-</form>
+    <h3>ADD NEW TASK</h3>
+
+    <form method="POST" class="form">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" name="Save" value="save" class="button">
+    </form>
+
+</div>
+{% endblock %}
+

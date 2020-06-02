@@ -1,5 +1,6 @@
 
 {%  extends 'tasks/base.html' %} {% block content %}
+
 <h2>{{ task.title }}</h2>
 {% if comments %}
 <table>
@@ -21,4 +22,5 @@
 <p><strong>No comments yet.</strong></p>
 {% endif %}
 <h2><a href="{% url 'tasks:comments:create' task.id %}">Add comment</a></h2>
+
 {% endblock %}

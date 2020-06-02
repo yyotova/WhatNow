@@ -28,6 +28,8 @@ comments_patterns = [
     path('new/<int:task_id>', comments.CommentCreate.as_view(), name='create'),
 ]
 
+
+
 urlpatterns = [
     path('', index, name='index'),
     path('tasks/', include((tasks_patterns, 'tasks'))),

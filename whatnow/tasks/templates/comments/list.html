@@ -1,0 +1,23 @@
+{% extends 'comments/base.html' %} {% block content %}
+<a href="{% url 'tasks:comments:create' %}">Add new</a>
+
+{% if comments %}
+<table>
+    <tr>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Task id</th>
+        <th>User id</th>
+    </tr>
+    {% for comment in comments %}
+    <tr>
+        <td><a href="{% url 'tasks:comments:detail' comment.id %}">{{ comment.description }}</a></td>
+        <td>{{ comment.date }}</td>
+        <td>{{ comment.task_id }}</td>
+        <td>{{ comment.user_id }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p><strong>No comments yet.</strong></p>
+{% endif %} {% endblock %}
