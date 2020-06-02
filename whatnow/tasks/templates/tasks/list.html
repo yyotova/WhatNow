@@ -1,4 +1,5 @@
 {% extends 'tasks/base.html' %} {% block content %}
+<<<<<<< HEAD
 <a href="{% url 'tasks:tasks:create' %}">Add new</a>
 
 {% if tasks %}
@@ -22,6 +23,7 @@
     </tr>
     {% endfor %}
 </table>
+
 {% else %}
 <p><strong>No tasks yet.</strong></p>
 {% endif %} {% endblock %}

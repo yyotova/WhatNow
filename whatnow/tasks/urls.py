@@ -5,6 +5,7 @@ app_name = 'tasks'
 
 
 tasks_patterns = [
+
     path('', tasks_view.list, name='list'),
     path('<int:task_id>/', tasks.detail, name='detail'),
     path('new/', tasks.TaskCreateView.as_view(), name='create'),
@@ -30,7 +31,9 @@ comments_patterns = [
 urlpatterns = [
     path('', index, name='index'),
     path('tasks/', include((tasks_patterns, 'tasks'))),
+
     path('projects/', include((projects_patterns, 'projects'))),
     path('reviews/', include((reviews_patterns, 'reviews'))),
     path('comments/', include((comments_patterns, 'comments')))
+
 ]

@@ -7,18 +7,13 @@
     </head>
     <body>
         <header>
+            <a href="{% url 'tasks:index' %}" class="home"><b>Home</b></a>
+            <a href="{% url 'tasks:tasks:list' %}" class="navigation"><b>Manage your tasks</b></a>
             <strong class="logo">WhatNow</strong>
-            <p class="navigation"><b>Manage your tasks</b></p>
         </header>
 
         <div class="container">
-            <ul>
-                <li><a href="{% url 'tasks:tasks:list' %}">Your Tasks</a></li> 
-                <li><a href="{% url 'tasks:projects:list' %}">All Projects</a></li> 
-                <li><a href="{% url 'tasks:reviews:list' %}">Reviews</a></li>   
-            </ul>
+           
         </div>
     </body>
 </html>
-
-
