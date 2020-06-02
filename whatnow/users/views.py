@@ -12,6 +12,7 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
+            form.save()
             dev_type = UsersType.objects.get(pk=1)
             username = form.cleaned_data.get('username')
             email = form.cleaned_data.get('email')
