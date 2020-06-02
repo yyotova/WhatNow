@@ -26,9 +26,17 @@ reviews_patterns = [
 ]
 
 
+comments_patterns = [
+    path('', comments.list, name='list'),
+    path('<int:comment_id>/', comments.detail, name='detail'),
+    path('new/', comments.CommentCreateView.as_view(), name='create'),
+]
+
+
 urlpatterns = [
     path('', index, name='index'),
     path('tasks/', include((tasks_patterns, 'tasks'))),
     path('projects/', include((projects_patterns, 'projects'))),
-    path('reviews/', include((reviews_patterns, 'reviews')))
+    path('reviews/', include((reviews_patterns, 'reviews'))),
+    path('comments/', include((comments_patterns, 'comments')))
 ]

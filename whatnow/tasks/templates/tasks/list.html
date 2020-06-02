@@ -1,27 +1,152 @@
 {% extends 'tasks/base.html' %} {% block content %}
-<a href="{% url 'tasks:tasks:create' %}">Add new</a>
 
 {% if tasks %}
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Project id</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Status</th>
-        <th>Description</th>
-    </tr>
-    {% for task in tasks %}
-    <tr>
-        <td><a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a></td>
-        <td>{{ task.project_id }}</td>
-        <td>{{ task.date_start }}</td>
-        <td>{{ task.date_end }}</td>
-        <td>{{ task.status }}</td>
-        <td>{{ task.description }}</td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container">
+    <div class="table">
+        <p class="heading">New</p>
+        {% for task in tasks %}
+            {% if task.status == 'new' %}
+                <table>
+                    <tr>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                            <a href="{% url 'tasks:comments:create' %}" class="newcom">...</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project id: {{ task.project_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
+        <table>
+            <tr>
+                <th><a href="{% url 'tasks:tasks:create' %}">Add new</a></th>
+            </tr>
+        </table>
+    </div>
+    <div class="table">
+        <p class="heading">Pending</p>
+        {% for task in tasks %}
+            {% if task.status == 'pending' %}
+            <table>
+                    <tr>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                            <a href="{% url 'tasks:comments:create' %}" class="newcom">...</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project id: {{ task.project_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+            </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="table">
+        <p class="heading">In progress</p>
+        {% for task in tasks %}
+            {% if task.status == 'in progress' %}
+                <table>
+                    <tr>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                            <a href="{% url 'tasks:comments:create' %}" class="newcom">...</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project id: {{ task.project_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+     <div class="table">
+        <p class="heading">Review</p>
+        {% for task in tasks %}
+            {% if task.status == 'review' %}
+                <table>
+                    <tr>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                            <a href="{% url 'tasks:comments:create' %}" class="newcom">...</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project id: {{ task.project_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'tasks:reviews:create' %}"><b>add review</b></td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="table">
+        <p class="heading">Done</p>
+        {% for task in tasks %}
+            {% if task.status == 'done' %}
+                <table>
+                    <tr>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                            <a href="{% url 'tasks:comments:create' %}" class="newcom">...</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project id: {{ task.project_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
 {% else %}
 <p><strong>No tasks yet.</strong></p>
 {% endif %} {% endblock %}
