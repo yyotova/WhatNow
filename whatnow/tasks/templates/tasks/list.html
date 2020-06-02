@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-{% extends "tasks/base.html" %} {% block content %}
-
-{% if tasks %}
-<table>
-   <tr>
-   	<th>title</th>
-   	<th>description</th>
-   	<th>start_date</th>
-   	<th>due_date</th>
-    <th>project</th>
-    <th>status</th>
-   </tr>
-  {% for task in tasks %}
-  <tr>
-  <td>{{ task.task_id.title }}</td>  
-  <td>{{ task.task_id.description }}</td>
-  <td>{{ task.task_id.date_start }}</td>
-  <td>{{ task.task_id.date_end }}</td>
-  <td>{{ task.task_id.project_id.title }}</td>
-  <td>{{ task.task_id.status }}</td>
-  
-  </tr>
-  {% endfor %}
-=======
 {% extends 'tasks/base.html' %} {% block content %}
 <a href="{% url 'tasks:tasks:create' %}">Add new</a>
 
@@ -30,7 +5,7 @@
 <table>
     <tr>
         <th>Title</th>
-        <th>Project id</th>
+        <th>Project</th>
         <th>Start</th>
         <th>End</th>
         <th>Status</th>
@@ -38,15 +13,14 @@
     </tr>
     {% for task in tasks %}
     <tr>
-        <td><a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a></td>
-        <td>{{ task.project_id }}</td>
-        <td>{{ task.date_start }}</td>
-        <td>{{ task.date_end }}</td>
-        <td>{{ task.status }}</td>
-        <td>{{ task.description }}</td>
+        <td><a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a></td>
+        <td>{{ task.task_id.project_id.title }}</td>
+        <td>{{ task.task_id.date_start }}</td>
+        <td>{{ task.task_id.date_end }}</td>
+        <td>{{ task.task_id.status }}</td>
+        <td>{{ task.task_id.description }}</td>
     </tr>
     {% endfor %}
->>>>>>> 48c809c238835abc03aae81632bf357cdc91a7da
 </table>
 {% else %}
 <p><strong>No tasks yet.</strong></p>

@@ -3,6 +3,7 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
 from tasks.models import Tasks
+from tasks.models import Comments
 
 
 def list(request):
@@ -11,7 +12,7 @@ def list(request):
 
 def detail(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
-    return render(request, 'tasks/detail.html', {'task': task})
+    return render(request, 'tasks/detail.html', {'task': task, 'comments': Comments.objects.filter(task_id=task_id).all()})
 
 
 class TaskCreateView(CreateView):
