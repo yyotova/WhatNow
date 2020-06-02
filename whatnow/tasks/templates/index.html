@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WhatNow</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'logout' %}" class="home"><b>Logout</b></a>
+            <a href="{% url 'tasks:index' %}" class="home"><b>Home</b></a>
+            <a href="{% url 'tasks:tasks:list' %}" class="navigation"><b>Manage your tasks</b></a>
+            <strong class="logo">WhatNow</strong>
+        </header>
+
+        <div class="container">
+           
+        </div>
+    </body>
+</html>

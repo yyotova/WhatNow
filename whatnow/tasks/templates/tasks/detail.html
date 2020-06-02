@@ -1,0 +1,26 @@
+
+{%  extends 'tasks/base.html' %} {% block content %}
+
+<h2>{{ task.title }}</h2>
+{% if comments %}
+<table>
+    <tr>
+        <th>Description</th>
+        <th>Date</th>
+        <th>User</th>
+    </tr>
+    {% for comment in comments %}
+    <tr>
+        <td>{{ comment.description }}</td>
+        <td>{{ comment.date }}</td>
+        <td>{{ comment.user_id.username }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<p><strong>No comments yet.</strong></p>
+{% endif %}
+<h2><a href="{% url 'tasks:comments:create' task.id %}">Add comment</a></h2>
+
+{% endblock %}

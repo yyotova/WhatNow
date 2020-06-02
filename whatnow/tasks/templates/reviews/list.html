@@ -1,0 +1,23 @@
+{% extends 'reviews/base.html' %} {% block content %}
+<a href="{% url 'tasks:reviews:create' %}">Add new</a>
+
+{% if reviews %}
+<table>
+    <tr>
+        <th>Task id</th>
+        <th>User id</th>
+        <th>Review</th>
+        <th>Date</th>
+    </tr>
+    {% for review in reviews %}
+    <tr>
+        <td><a href="{% url 'tasks:reviews:detail' review.id %}">{{ review.taks_id }}</a></td>
+        <td>{{ review.user_id }}</td>
+        <td>{{ review.review }}</td>
+        <td>{{ review.date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p><strong>No reviews yet.</strong></p>
+{% endif %} {% endblock %}

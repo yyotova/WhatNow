@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Projects(models.Model):
     title = models.CharField(max_length=250)
     date_start = models.DateField()
