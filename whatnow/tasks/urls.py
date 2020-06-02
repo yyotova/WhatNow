@@ -1,15 +1,15 @@
 from django.urls import path, include
 
-from tasks.views import index
-# , tasks, projects, reviews, comments
+from tasks.views import index, tasks
+# , projects, reviews, comments
 
 app_name = 'tasks'
 
 
 tasks_patterns = [
-    # path('', tasks.list, name='list'),
-    # path('<int:task_id>/', tasks.detail, name='detail'),
-    # path('new/', tasks.TaskCreateView.as_view(), name='create'),
+    path('', tasks.list, name='list'),
+    path('<int:task_id>/', tasks.detail, name='detail'),
+    path('new/', tasks.TaskCreateView.as_view(), name='create'),
 ]
 
 
@@ -36,7 +36,7 @@ tasks_patterns = [
 
 urlpatterns = [
     path('', index, name='index'),
-    # path('tasks/', include((tasks_patterns, 'tasks'))),
+    path('tasks/', include((tasks_patterns, 'tasks'))),
     # path('projects/', include((projects_patterns, 'projects'))),
     # path('reviews/', include((reviews_patterns, 'reviews'))),
     # path('comments/', include((comments_patterns, 'comments')))
