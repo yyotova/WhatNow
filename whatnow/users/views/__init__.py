@@ -1,1 +1,2 @@
-from .register import register, profile, index
+from .register import register
+from .profile import profile
