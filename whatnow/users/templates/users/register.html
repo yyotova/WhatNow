@@ -1,6 +1,35 @@
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-</form>
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div class="container">
+
+        <div class="image">  
+        </div>
+
+        <div class="form-container">
+            <div class="logo_container">
+                <strong class="logo">WhatNow</strong>
+            </div>
+            <div>
+                <strong class="create">Create your profile</strong>
+            </div>
+            <div class="form">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="button">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
 

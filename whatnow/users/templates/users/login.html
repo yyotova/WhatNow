@@ -1,8 +1,43 @@
 {% load static %}
-<head>
 
-    <title>Your Tasks</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div class="container">
+
+        <div class="image">  
+        </div>
+
+        <div class="form-container">
+            <div class="logo_container">
+                <strong class="logo">WhatNow</strong>
+            </div>
+            <div class="signin">
+                <strong class="create">Sign in</strong>
+            </div>
+            <div class="form">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="button">Login</button>
+                </form>
+            </div>
+            <div class="small">
+                <p><small>Need An Account?</small></p>
+                <p><small><a href="{% url 'register' %}">Sign Up Now</a></small></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!-- <head>
+
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
 </head>
  <header>
             <strong class="logo">WhatNow</strong>
@@ -16,4 +51,4 @@
 <small>
 	Need An Account? <a href="{% url 'register' %}">Sign Up Now</a>
 </small>
-</div>
+</div> -->
