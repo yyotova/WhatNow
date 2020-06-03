@@ -1,0 +1,17 @@
+{% load static %}
+<head>
+
+    <title>Your Tasks</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<header>
+    <a href="{% url 'logout' %}" class="home"><b>Logout</b></a>
+    <a href="{% url 'tasks:index' %}" class="home"><b>Home</b></a>
+    <a href="{% url 'tasks:tasks:list' %}" class="navigation"><b>Manage your tasks</b></a>
+    <strong class="logo">WhatNow</strong>
+</header>
+<div class="media">
+	<img width="300" src="{{ user.profile.image.url }}" alt="profile picture">
+	<h2>{{ user.username }}</h2>
+	<h2>{{ user.email }}</h2>
+</div>

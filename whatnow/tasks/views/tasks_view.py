@@ -5,7 +5,7 @@ from tasks.models import Tasks
 
 
 def list(request):
-    user = get_object_or_404(Users, id=request.session.get('user_id'))
+    user = get_object_or_404(Users, user_id=request.session.get('user_id'))
     print(request.session.get('user_id'))
     if request.session.get('user_type') == 'manager':
         print(request.session.get('user_type'))
