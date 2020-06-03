@@ -1,15 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import CreateView, UpdateView
-from django.urls import reverse_lazy
-
-from tasks.models import Tasks
 from users.models import UsersTasks
+from users.models import Users
 
 
 def list(request):
-    user_id = 1
-    #  session_id
-    return render(request, 'tasks/list.html', {'tasks': UsersTasks.objects.filter(user_id_id=user_id).all()})
+    print(request.session.get('user_id'))
+    user = get_object_or_404(Users, user_id=request.session.get('user_id'))
+    return render(request, 'tasks/list.html', {'tasks': UsersTasks.objects.filter(user_id=user).all()})
 
 
 # def detail(request, task_id):

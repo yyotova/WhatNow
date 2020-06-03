@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class UsersType(models.Model):
@@ -6,14 +7,23 @@ class UsersType(models.Model):
 
 
 class Users(models.Model):
-    username = models.CharField(max_length=250)
-    password = models.CharField(max_length=250)
-    email = models.CharField(max_length=250)
+    user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     user_type = models.ForeignKey(UsersType, default=1, on_delete=models.CASCADE)
     phone = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.user.username
 
 
 class UsersTasks(models.Model):
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     task_id = models.ForeignKey('tasks.Tasks', on_delete=models.CASCADE)
     opened = models.BooleanField(default=False)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.user.username} Profile'
