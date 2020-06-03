@@ -14,8 +14,9 @@ def detail(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
     task.status = 'in progress'
     task.save()
+    user_id = request.session.get('user_id')
     comments = Comments.objects.filter(task_id=task_id).all()
-    return render(request, 'tasks/detail.html', {'task': task, 'comments': comments})
+    return render(request, 'tasks/detail.html', {'task': task, 'comments': comments, 'user_id': user_id})
 
 
 class TaskCreateView(CreateView):
