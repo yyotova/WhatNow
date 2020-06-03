@@ -29,7 +29,6 @@ comments_patterns = [
 ]
 
 
-
 urlpatterns = [
     path('', index, name='index'),
     path('tasks/', include((tasks_patterns, 'tasks'))),
