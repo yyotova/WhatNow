@@ -4,8 +4,9 @@ from users.models import Users
 
 
 def list(request):
-    user = get_object_or_404(Users, id=request.session.get('user_id'))
-    return render(request, 'tasks/list.html', {'tasks': UsersTasks.objects.filter(user_id_id=user).all()})
+    print(request.session.get('user_id'))
+    user = get_object_or_404(Users, user_id=request.session.get('user_id'))
+    return render(request, 'tasks/list.html', {'tasks': UsersTasks.objects.filter(user_id=user).all()})
 
 
 # def detail(request, task_id):

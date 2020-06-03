@@ -5,7 +5,7 @@ from users.models import *
 
 @admin.register(Users)
 class UsersAdmin(admin.ModelAdmin):
-    list_display = ('username', 'password', 'email', 'get_user_type', 'phone')
+    list_display = ('user_id', 'get_user_type', 'phone')
 
     def get_user_type(self, obj):
         return obj.user_type.user_type
@@ -30,3 +30,6 @@ class UsersTasksAdmin(admin.ModelAdmin):
 
     get_user.short_description = 'User'
     get_task.short_description = 'task'
+
+
+admin.site.register(Profile)
