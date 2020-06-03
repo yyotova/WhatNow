@@ -12,6 +12,8 @@ def list(request):
 
 
 def detail(request, project_id):
+    if request.session.get('user_type') != 3:
+        return redirect('/tasks')
     project = get_object_or_404(Projects, id=project_id)
     return render(request, 'projects/detail.html', {'project': project})
 

@@ -8,6 +8,7 @@ tasks_patterns = [
     path('', tasks_view.list, name='list'),
     path('<int:task_id>/', tasks.detail, name='detail'),
     path('<int:task_id>/for_review', tasks.task_sent_review, name='sent-review'),
+    path('close/<int:task_id>/', tasks.task_close, name='close'),
     path('<int:task_id>/asign', tasks.task_asign, name='asign'),
     path('new/', tasks.TaskCreateView.as_view(), name='create'),
 ]
@@ -21,7 +22,7 @@ projects_patterns = [
 reviews_patterns = [
     path('', reviews.list, name='list'),
     path('<int:review_id>/', reviews.detail, name='detail'),
-    path('new/', reviews.ReviewCreateView.as_view(), name='create'),
+    path('new/<int:review_id>/', reviews.create, name='create'),
 ]
 comments_patterns = [
     path('new/<int:task_id>', comments.CommentCreate.as_view(), name='create'),

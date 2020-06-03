@@ -1,6 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
+from django import forms
+
+from tasks.models import Tasks
+from users.models import Users
 
 from tasks.models import Reviews
 
@@ -14,10 +18,24 @@ def detail(request, review_id):
     return render(request, 'reviews/detail.html', {'review': review})
 
 
-class ReviewCreateView(CreateView):
-    model = Reviews
-    fields = ['task_id', 'user_id', 'review', 'date']
-    template_name = 'reviews/create.html'
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Reviews
+        fields = ('review', 'date',)
 
-    def get_success_url(self, **kwargs):
-        return reverse_lazy('tasks:reviews:detail', kwargs={'review_id': self.object.id})
+
+def create(request, review_id):
+    if request.session.get('user_type') != 2:
+        return redirect('/tasks')
+    task = get_object_or_404(Tasks, id=review_id)
+    user = Users.objects.get(user_id=request.session.get('user_id'))
+    if request.method == 'POST':
+        form = ReviewForm(data=request.POST)
+        if form.is_valid():
+            form.instance.user_id = user
+            form.instance.task_id = task
+            form.save()
+            return redirect('/tasks')
+    else:
+        form = ReviewForm()
+        return render(request, 'reviews/create.html', {'form': form})

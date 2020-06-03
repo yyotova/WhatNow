@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django import forms
 from tasks.models import Tasks, Comments
 from users.models import UsersTasks
+
 
 def list(request):
     return render(request, 'tasks/list.html', {'tasks': Tasks.objects.all()})
@@ -20,8 +21,19 @@ def detail(request, task_id):
 
 
 def task_sent_review(request, task_id):
+    if request.session.get('user_type') != 1:
+        return redirect('/tasks')
     task = get_object_or_404(Tasks, id=task_id)
     task.status = 'review'
+    task.save()
+    return redirect('/tasks')
+
+
+def task_close(request, task_id):
+    if request.session.get('user_type') != 2:
+        return redirect('/tasks')
+    task = get_object_or_404(Tasks, id=task_id)
+    task.status = 'done'
     task.save()
     return render(request, 'tasks/list.html', {'tasks': Tasks.objects.all()})
 
@@ -33,6 +45,8 @@ class UserForm(forms.ModelForm):
 
 
 def task_asign(request, task_id):
+    if request.session.get('user_type') != 2:
+        return redirect('/tasks')
     task = get_object_or_404(Tasks, id=task_id)
     task.status = 'pending'
     task.save()
@@ -45,6 +59,7 @@ def task_asign(request, task_id):
     else:
         form = UserForm()
         return render(request, 'tasks/asign.html', {'form': form})
+
 
 class TaskCreateView(CreateView):
     model = Tasks
