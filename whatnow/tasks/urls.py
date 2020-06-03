@@ -7,6 +7,8 @@ app_name = 'tasks'
 tasks_patterns = [
     path('', tasks_view.list, name='list'),
     path('<int:task_id>/', tasks.detail, name='detail'),
+    path('<int:task_id>/for_review', tasks.task_sent_review, name='sent-review'),
+    path('<int:task_id>/asign', tasks.task_asign, name='asign'),
     path('new/', tasks.TaskCreateView.as_view(), name='create'),
 ]
 

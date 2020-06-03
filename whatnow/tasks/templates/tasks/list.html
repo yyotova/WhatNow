@@ -1,5 +1,8 @@
 {% extends 'tasks/base.html' %} {% block content %}
 
+{% if user_type == 2 %}
+ <a href="{% url 'tasks:tasks:create' %}">Add new</a>
+ {% endif %}
 {% if tasks %}
 <div class="container">
     <div class="table">
@@ -29,7 +32,7 @@
         {% endfor %}
         <table>
             <tr>
-                <th><a href="{% url 'tasks:tasks:create' %}">Add new</a></th>
+               
             </tr>
         </table>
     </div>
@@ -141,11 +144,11 @@
             <table>
                     <tr>
                         <th>
-                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.task_id.title }}</a>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.project_id }}</td>
+                        <td>Project: {{ task.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.date_start }}</td>

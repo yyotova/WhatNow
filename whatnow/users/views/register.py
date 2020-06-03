@@ -15,9 +15,9 @@ def register(request):
         if form.is_valid():
             user = form.save()
             dev_type = UsersType.objects.get(pk=1)
-            username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password1')
+            # username = form.cleaned_data.get('username')
+            # email = form.cleaned_data.get('email')
+            # password = form.cleaned_data.get('password1')
             phone = form.cleaned_data.get('phone')
 
             new_user = Users(user=user, user_type=dev_type, phone=phone)

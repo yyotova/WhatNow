@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-
-from tasks.models import Tasks
-from tasks.models import Comments
-
+from django import forms
+from tasks.models import Tasks, Comments
+from users.models import UsersTasks
 
 def list(request):
     return render(request, 'tasks/list.html', {'tasks': Tasks.objects.all()})
@@ -12,12 +11,40 @@ def list(request):
 
 def detail(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
-    task.status = 'in progress'
-    task.save()
+    if request.session.get('user_type') == 1:
+        task.status = 'in progress'
+        task.save()
     user_id = request.session.get('user_id')
     comments = Comments.objects.filter(task_id=task_id).all()
-    return render(request, 'tasks/detail.html', {'task': task, 'comments': comments, 'user_id': user_id})
+    return render(request, 'tasks/detail.html', {'task': task, 'comments': comments, 'user_id': user_id, 'user_type': request.session.get('user_type')}) # noqa
 
+
+def task_sent_review(request, task_id):
+    task = get_object_or_404(Tasks, id=task_id)
+    task.status = 'review'
+    task.save()
+    return render(request, 'tasks/list.html', {'tasks': Tasks.objects.all()})
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = UsersTasks
+        fields = ('user_id',)
+
+
+def task_asign(request, task_id):
+    task = get_object_or_404(Tasks, id=task_id)
+    task.status = 'pending'
+    task.save()
+    if request.method == 'POST':
+        form = UserForm(data=request.POST)
+        if form.is_valid():
+            form.instance.task_id = task
+            form.save()
+            return render(request, 'tasks/list.html', {'tasks': Tasks.objects.all()})
+    else:
+        form = UserForm()
+        return render(request, 'tasks/asign.html', {'form': form})
 
 class TaskCreateView(CreateView):
     model = Tasks

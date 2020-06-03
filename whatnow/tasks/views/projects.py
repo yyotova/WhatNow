@@ -6,7 +6,7 @@ from tasks.models import Projects
 
 
 def list(request):
-    if request.session.get('user_type') != 'manager':
+    if request.session.get('user_type') != 3:
         return redirect('/tasks')
     return render(request, 'projects/list.html', {'projects': Projects.objects.all()})
 
