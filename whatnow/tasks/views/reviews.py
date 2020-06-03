@@ -19,5 +19,5 @@ class ReviewCreateView(CreateView):
     fields = ['task_id', 'user_id', 'review', 'date']
     template_name = 'reviews/create.html'
 
-    def get_success_url(self, kwargs):
+    def get_success_url(self, **kwargs):
         return reverse_lazy('tasks:reviews:detail', kwargs={'review_id': self.object.id})

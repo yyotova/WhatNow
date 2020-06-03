@@ -138,10 +138,28 @@
                     </tr>
                 </table>
             {% endif %}
+            <table>
+                    <tr>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.task_id.title }}</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project id: {{ task.project_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+                </table>
         {% endfor %}
     </div>
 </div>
-
 {% else %}
 <p><strong>No tasks yet.</strong></p>
 {% endif %} {% endblock %}

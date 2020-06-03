@@ -1,11 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from users.models import UsersTasks
 from users.models import Users
+from tasks.models import Tasks
 
 
 def list(request):
     user = get_object_or_404(Users, id=request.session.get('user_id'))
-    return render(request, 'tasks/list.html', {'tasks': UsersTasks.objects.filter(user_id_id=user).all()})
+    print(request.session.get('user_id'))
+    if request.session.get('user_type') == 'manager':
+        print(request.session.get('user_type'))
+        return render(request, 'tasks/list.html', {'tasks': Tasks.objects.all(), 'user_type': request.session['user_type']})
+    elif request.session.get('user_type') == 'developer':
+        return render(request, 'tasks/list.html', {'tasks': UsersTasks.objects.filter(user_id_id=user).all(), 'user_type': request.session['user_type']})
 
 
 # def detail(request, task_id):
