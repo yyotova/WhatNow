@@ -1,39 +1,40 @@
-
 {%  extends 'tasks/base.html' %} {% block content %}
 
-<h1>{{ user_id }}</h1>
-<h2>{{ task.title }}</h2>
+<div class="box1">
+    <h2 class="h2">User id: {{ user_id }}</h2>
+    <h2 class="h2">Task title: {{ task.title }}</h2>
 
-{% if user_type == 1 %}
-<h3>
-    <a href="{% url 'tasks:tasks:sent-review' task.id %}">Send Review</a>
-</h3>
-{% endif %}
-{% if user_type == 2 %}
-<h3>
-    <a href="{% url 'tasks:tasks:asign' task.id %}">asign task</a>
-</h3>
-{% endif %}
+    {% if user_type == 1 %}
+    <h2 class="h2">
+        <a href="{% url 'tasks:tasks:sent-review' task.id %}">Send Review</a>
+    </h2>
+    {% endif %}
+    {% if user_type == 2 %}
+    <h2 class="h2">
+        <a href="{% url 'tasks:tasks:asign' task.id %}">asign task</a>
+    </h2>
+    {% endif %}
 
-{% if comments %}
-<table>
-    <tr>
-        <th>Description</th>
-        <th>Date</th>
-        <th>User</th>
-    </tr>
-    {% for comment in comments %}
-    <tr>
-        <td>{{ comment.description }}</td>
-        <td>{{ comment.date }}</td>
-        <td>{{ comment.user_id.user }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    {% if comments %}
+    <table class="pr">
+        <tr>
+            <th class="th">Description</th>
+            <th class="th">Date</th>
+            <th class="th">User</th>
+        </tr>
+        {% for comment in comments %}
+        <tr>
+            <td>{{ comment.description }}</td>
+            <td>{{ comment.date }}</td>
+            <td>{{ comment.user_id.user }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 
-{% else %}
-<p><strong>No comments yet.</strong></p>
-{% endif %}
-<h2><a href="{% url 'tasks:comments:create' task.id %}">Add comment</a></h2>
+    {% else %}
+    <h5 class="h2"><strong>No comments yet.</strong></h5>
+    {% endif %}
+    <h2><a href="{% url 'tasks:comments:create' task.id %}">Add comment</a></h2>
+</div>
 
 {% endblock %}

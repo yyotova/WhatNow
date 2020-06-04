@@ -19,6 +19,24 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 2rem;
+}
+
+.projects {
+    width: 100%;
+    height: 92%;
+    background-image: url("work.jpg");
+    background-size: 1841px 750px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pr {
+    font-size: 23px;
+}
+
+.th {
+    text-align: left;
 }
 
 header {
@@ -43,10 +61,6 @@ header {
 #logout {
     font-size: 18px;
     padding-top: 1.2rem;
-}
-
-a:hover {
-    background-color: #8ccfa0;
 }
 
 .logo {
@@ -79,16 +93,31 @@ a {
     padding-left: 1rem;
     padding-top: 0.5rem;
     font-style: italic;
-    font-size: 18px;
-    margin-bottom: 1rem;
+    font-size: 23px;
+    margin-bottom: 1.5rem;
 }
 
 .table {
+    width: 15%;
+    font-size: 15px;
     border: 1px solid grey;
     border-radius: 1rem;
     background-color: rgb(195, 195, 190, 0.85);
     margin-right: 0.5rem;
     margin-right: 0.5rem;
+}
+
+.table1 {
+    width: 18%;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    background-color: rgb(195, 195, 190, 0.85);
+    margin-right: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.t {
+    font-size: 19px;
 }
 
 table {
@@ -98,6 +127,11 @@ table {
     color: #1a390b;
     padding: 0.1rem;
     margin-bottom: 0.7rem;
+}
+
+.addnew {
+    font-size: 22px;
+    padding: none;
 }
 
 .newcom {
@@ -157,6 +191,20 @@ h3 {
     padding-bottom: 4rem;
 }
 
+.box1 {
+    height: 92%;
+    padding-top: 2rem;
+    padding-right: 10rem;
+    padding-left: 10rem;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(228,235,230,0.7819328414959734) 0%, rgba(222,229,231,1) 100%, rgba(140,207,160,1) 100%);
+    font-size: 20px;
+}
+
+#new {
+    width: 9%;
+    margin-top: 1rem;
+}
+
 img {
     border-radius: 50%;
     margin-bottom: 2.5rem;
@@ -196,7 +244,7 @@ label {
     color: #40614B;
 }
 
-.heading {
+.h2 {
     font-family: 'OCR A Std', monospace;
     font-size: 33px;
     padding-top: 1.3rem;
