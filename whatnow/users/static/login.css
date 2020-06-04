@@ -103,3 +103,15 @@ a {
     font-style: italic;
     color: #88614f;
 }
+
+#logout {
+    font-size: 36px;
+}
+
+.logout {
+    margin-top: 7rem;
+}
+
+.question {
+    margin-left: 11rem;
+}

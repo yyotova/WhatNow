@@ -1,4 +1,28 @@
-<h2>You have been logged out</h2>
-<small>
-	<a href="{% url 'login' %}">Log In Again</a>
-</small>
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logged out</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div class="container">
+
+        <div class="image">  
+        </div>
+
+        <div class="form-container">
+            <div class="logo_container">
+                <strong class="logo">WhatNow</strong>
+            </div>
+            <div class="logout">
+                <strong class="create" id="logout">You have been logged out</strong>
+            </div>
+            <div class="small">
+                <p class="question"><a href="{% url 'login' %}">Log In Again?</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
