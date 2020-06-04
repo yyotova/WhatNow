@@ -22,7 +22,7 @@ body {
 .form-container {
     width: 50%;
     height: 100%;
-    padding-top: 1.7rem;
+    padding-top: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,11 +30,11 @@ body {
 
 .logo {
     font-family: 'OCR A Std', monospace;
-    font-size: 33px;
+    font-size: 55px;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(6,128,49,0.7819328414959734) 0%, rgba(39,92,12,1) 100%, rgba(0,212,255,1) 100%);
     border: 3px ridge #225508;
     color: white;
-    border-radius: 1rem;
+    border-radius: 1.3rem;
     padding-left: .4rem;
     padding-right: .4rem;
 }
@@ -46,15 +46,17 @@ body {
 .create {
     font-family: 'OCR A Std', monospace;
     color: #40614B;
-    font-size: 22px;
+    font-size: 31px;
 }
 
 .signin {
     margin-bottom: 3rem;
+    font-size: 40px;
 }
 
 .form {
     margin-top: 1.5rem;
+    font-size: 27px;
 }
 
 span, ul {
@@ -73,7 +75,7 @@ input {
 }
 
 .button {
-    font-size: 20px;
+    font-size: 25px;
     border-radius: 1rem;
     color: #40614B;
     padding: .2rem;
@@ -84,8 +86,13 @@ input {
     margin-left: 8rem;
 }
 
+#button {
+    margin-left: 12rem;
+}
+
 .small {
     font-family: 'OCR A Std', monospace;
+    font-size: 20px;
     color: #40614B;
     margin-top: 5rem;
     margin-right: 12rem;
@@ -96,4 +103,3 @@ a {
     font-style: italic;
     color: #88614f;
 }
-
