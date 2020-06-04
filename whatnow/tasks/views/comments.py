@@ -13,7 +13,8 @@ class CommentCreate(CreateView):
     def form_valid(self, form):
         task_id = self.request.get_full_path()[-1::]
         task = Tasks.objects.get(id=task_id)
-        user = Users.objects.get(username=self.request.user)
+        user = Users.objects.get(user_id=self.request.session.get('user_id'))
+        print(user)
         form.instance.user_id = user
         form.instance.task_id = task
         return super().form_valid(form)

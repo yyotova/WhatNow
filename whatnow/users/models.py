@@ -23,7 +23,12 @@ class UsersTasks(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(null=True)
+    current_locations = models.CharField(null=True, max_length=150)
+    technologies = models.TextField(null=True)
+    skills = models.TextField(null=True)
+    interests = models.TextField(null=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     def __str__(self):
-        return f'{self.user.user.username} Profile'
+        return f'{self.user.username} Profile'

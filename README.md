@@ -2,8 +2,9 @@
 Web application for managing tasks of different software projects.
 
 ## Requirements
-This is a Django app.So, you need to install it first.
-```python -m pip install Django```
+You need to install the requirements.
+
+```pip install -r requirements.txt```
 
 ## Explanation
 WhatNow provides different functionality for the users.
@@ -13,10 +14,26 @@ For now, they are:
 * Project manager
 
 ### Registrtion
-By default, everyone registers like developer and the admin can change the user's type.
+By default, everyone registers like a developer, and the admin can change the user's type as a project manager.
+In turn, the project manager can choose a developer to be a team leader.
 
 ### Permissions
-* Developers can olny see their tasks which are 'in progress', in 'review' or 'done'.
-* Team leaders can add which developers will work for a given task.
-* Project managers can add new tasks for a project.
+Developer:
+* Can see their tasks which are 'in progress', in 'review' or 'done'.
+* Can change the status of a task (without review and closing it).
+* Can review other tasks.
 
+Team leader:
+* Can distribute developers who will work for a given task.
+* Can review tasks.
+* Can close a task.
+
+Project manager:
+* Can create a project.
+* Can choose a team leader.
+* Can add new tasks for a project.
+
+**Everyone can writes comments.**
+
+### Profile
+Every user has a profile page. There they can upload a picture, write a bio, and add more information about them.
