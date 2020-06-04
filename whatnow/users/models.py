@@ -24,7 +24,7 @@ class UsersTasks(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(null=True)
-    current_locations = models.CharField(null=True, max_length=150)
+    current_location = models.CharField(null=True, max_length=150)
     technologies = models.TextField(null=True)
     skills = models.TextField(null=True)
     interests = models.TextField(null=True)
