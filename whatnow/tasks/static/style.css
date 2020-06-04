@@ -284,3 +284,20 @@ textarea {
     font-size: 27px;
     font-weight: bold;
 }
+
+#task {
+    margin-top: 1rem;
+    margin-left: 4rem;
+}
+
+.smallform {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 25px;
+}
+
+#small {
+    font-size: 22px;
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
