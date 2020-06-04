@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class UsersType(models.Model):
     user_type = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.user_type
+
 
 class Users(models.Model):
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
@@ -19,6 +22,9 @@ class UsersTasks(models.Model):
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     task_id = models.ForeignKey('tasks.Tasks', on_delete=models.CASCADE)
     opened = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user_id.username
 
 
 class Profile(models.Model):

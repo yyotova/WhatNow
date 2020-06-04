@@ -5,38 +5,7 @@
  {% endif %}
 {% if tasks_user %}
 <div class="container">
-    <div class="table">
-        <p class="heading">New</p>
-        {% for task in tasks_user %}
-        <!-- {{ task.task_id.status }} -->
-            {% if task.task_id.status == 'new' %}
-                <table>
-                    <tr>
-                        <th>
-                            <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Start: {{ task.task_id.date_start }}</td>
-                    </tr>
-                    <tr>
-                        <td>End: {{ task.task_id.date_end }}</td>
-                    </tr>
-                    <tr>
-                        <td>Description: {{ task.task_id.description }}</td>
-                    </tr>
-                </table>
-            {% endif %}
-        {% endfor %}
-        <table>
-            <tr>
-               
-            </tr>
-        </table>
-    </div>
+    
     <div class="table">
         <p class="heading">Pending</p>
         {% for task in tasks_user %}
@@ -48,7 +17,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
+                        <td>Project: {{ task.task_id.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.task_id.date_start }}</td>
@@ -74,7 +43,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
+                        <td>Project: {{ task.task_id.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.task_id.date_start }}</td>
@@ -100,7 +69,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
+                        <td>Project: {{ task.task_id.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.task_id.date_start }}</td>
@@ -126,25 +95,6 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Start: {{ task.task_id.date_start }}</td>
-                    </tr>
-                    <tr>
-                        <td>End: {{ task.task_id.date_end }}</td>
-                    </tr>
-                    <tr>
-                        <td>Description: {{ task.task_id.description }}</td>
-                    </tr>
-                </table>
-            <table>
-                    <tr>
-                        <th>
-                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
-                        </th>
-                    </tr>
-                    <tr>
                         <td>Project: {{ task.task_id.project_id.title }}</td>
                     </tr>
                     <tr>
@@ -157,6 +107,7 @@
                         <td>Description: {{ task.task_id.description }}</td>
                     </tr>
                 </table>
+          
             {% endif %}
         {% endfor %}
     </div>
@@ -171,7 +122,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.project_id }}</td>
+                        <td>Project: {{ task.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.date_start }}</td>

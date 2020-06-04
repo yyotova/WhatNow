@@ -10,7 +10,9 @@
             <strong class="logo">WhatNow</strong>
             <a href="{% url 'profile' %}" class="home"><b>Profile</b></a>
             <a href="{% url 'tasks:index' %}" class="home"><b>Home</b></a>
+            {% if user_type != 3 %}
             <a href="{% url 'tasks:tasks:list' %}" class="navigation"><b>Manage your tasks</b></a>
+            {% endif %}
             {% if user_type == 3 %}
             <a href="{% url 'tasks:projects:list' %}" class="navigation"><b>Manage your projects</b></a>
             <a href="{% url 'user-list' %}" class="navigation"><b>Manage your Users</b></a>
@@ -19,7 +21,7 @@
         </header>
 
         <div class="container">
-           
+
         </div>
     </body>
 </html>
