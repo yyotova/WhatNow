@@ -14,8 +14,8 @@
             <a href="{% url 'tasks:tasks:list' %}" class="navigation"><b>Manage your tasks</b></a>
             {% endif %}
             {% if user_type == 3 %}
-            <a href="{% url 'tasks:projects:list' %}" class="navigation"><b>Manage your projects</b></a>
-            <a href="{% url 'user-list' %}" class="navigation"><b>Manage your Users</b></a>
+            <a href="{% url 'tasks:projects:list' %}" class="navigation"><b>Projects</b></a>
+            <a href="{% url 'user-list' %}" class="navigation"><b>Distribute developers</b></a>
             {% endif %}
             <a href="{% url 'logout' %}" class="home"><b>Logout</b></a>
         </header>

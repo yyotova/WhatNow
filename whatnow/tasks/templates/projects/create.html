@@ -1,6 +1,12 @@
-<h2>Add new project</h2>
+{% extends 'projects/base.html' %} {% block content %}
 
-<form method="POST">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" name="Save">
-</form>
+<div class="box1">
+    <h2 class="h2">Add new project</h2>
+
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="button" id="new">ADD</button>
+    </form>
+</div>
+
+{% endblock %}

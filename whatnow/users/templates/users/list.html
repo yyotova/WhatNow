@@ -1,20 +1,23 @@
 {% extends 'projects/base.html' %} {% block content %}
 
-{% if users %}
-<table>
-    <tr>
-        <th>Username</th>
-        <th>Email</th>
-        <td>Type</td>
-    </tr>
-    {% for user in users %}
-    <tr>
-        <td><a href="{% url 'promote' user.id %}">{{ user.user.username }}</a></td>
-        <td>{{ user.user.email }}</td>
-        <td>{{ user.user_type.user_type }}</td>
-    </tr>
-    {% endfor %}
-</table>
-{% else %}
-<p><strong>No users yet.</strong></p>
-{% endif %} {% endblock %}
+<div class="projects">
+    {% if users %}
+    <table class="pr">
+        <tr>
+            <th class="th">Username</th>
+            <th class="th">Email</th>
+            <th class="th">Type</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td><a href="{% url 'promote' user.id %}">{{ user.user.username }}</a></td>
+            <td>{{ user.user.email }}</td>
+            <td>{{ user.user_type.user_type }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p><strong>No users yet.</strong></p>
+    {% endif %} 
+</div>
+{% endblock %}
