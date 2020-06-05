@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class UsersType(models.Model):
     user_type = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.user_type
+
 
 class Users(models.Model):
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
@@ -20,11 +23,14 @@ class UsersTasks(models.Model):
     task_id = models.ForeignKey('tasks.Tasks', on_delete=models.CASCADE)
     opened = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.user_id.username
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(null=True)
-    current_locations = models.CharField(null=True, max_length=150)
+    current_location = models.CharField(null=True, max_length=150)
     technologies = models.TextField(null=True)
     skills = models.TextField(null=True)
     interests = models.TextField(null=True)

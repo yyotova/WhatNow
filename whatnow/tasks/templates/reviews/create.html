@@ -1,6 +1,25 @@
-<h2>Add new review</h2>
+{% load static %}
+<head>
+    <title>Review</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
 
-<form method="POST">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" name="Save">
-</form>
+<header>
+    <strong class="logo">WhatNow</strong>
+    <a href="{% url 'profile' %}" class="home"><b>Profile</b></a>
+    <a href="{% url 'tasks:index' %}" class="home"><b>Home</b></a>
+    <a href="{% url 'tasks:tasks:list' %}" class="navigation"><b>Manage your tasks</b></a>
+    {% if user_type == 3 %}
+    <a href="{% url 'tasks:projects:list' %}" class="navigation"><b>Manage your projects</b></a>
+    <a href="{% url 'user-list' %}" class="navigation"><b>Manage your Users</b></a>
+    {% endif %}
+    <a href="{% url 'logout' %}" class="home"><b>Logout</b></a>
+</header>
+
+<div class="box1">
+    <h2 class="h2">Add new review</h2>
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="button" id="new">ADD</button>
+    </form>
+</div>

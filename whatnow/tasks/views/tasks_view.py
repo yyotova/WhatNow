@@ -6,7 +6,6 @@ from tasks.models import Tasks
 
 def list(request):
     user = get_object_or_404(Users, user_id=request.session.get('user_id'))
-    print(request.session.get('user_id'))
     if request.session.get('user_type') == 3:
         return render(request, 'tasks/list.html', {'tasks': Tasks.objects.filter(status='done').all(), 'user_type': request.session['user_type']}) # noqa
     elif request.session.get('user_type') == 1:

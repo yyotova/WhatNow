@@ -1,9 +1,16 @@
 {% load static %}
 <head>
+    <title>Projects</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 
-<a href="{% url 'tasks:index' %}">Home</a>
-<h1><a href="{% url 'tasks:projects:list' %}">Projects</a></h1>
+<header>
+    <strong class="logo">WhatNow</strong>
+    <a href="{% url 'profile' %}" class="home"><b>Profile</b></a>
+    <a href="{% url 'tasks:index' %}" class="home"><b>Home</b></a>
+    <a href="{% url 'tasks:projects:list' %}" class="navigation"><b>Manage your projects</b></a>
+    <a href="{% url 'user-list' %}" class="navigation"><b>Manage your Users</b></a>
+    <a href="{% url 'logout' %}" class="home"><b>Logout</b></a>
+</header>
 
 {% block content %} {% endblock %}

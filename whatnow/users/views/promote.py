@@ -1,6 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
 
 
 from users.models import Users
@@ -20,12 +18,3 @@ def promote(request, user_id):
     user.user_type = team_leader_type
     user.save()
     return render(request, 'users/list.html', {'users': Users.objects.all()})
-
-
-# class TaskCreateView(CreateView):
-#     model = Tasks
-#     fields = ['title', 'project_id', 'date_start', 'date_end', 'status', 'description']
-#     template_name = 'tasks/create.html'
-
-#     def get_success_url(self, **kwargs):
-#         return reverse_lazy('tasks:tasks:detail', kwargs={'task_id': self.object.id})

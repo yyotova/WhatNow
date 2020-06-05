@@ -1,80 +1,46 @@
 {% extends 'tasks/base.html' %} {% block content %}
 
-{% if user_type == 2 %}
- <a href="{% url 'tasks:tasks:create' %}">Add new</a>
- {% endif %}
-{% if tasks_user %}
+
+{% if user_type == 1 %}
 <div class="container">
-    <div class="table">
-        <p class="heading">New</p>
-        {% for task in tasks_user %}
-        <!-- {{ task.task_id.status }} -->
-            {% if task.task_id.status == 'new' %}
-                <table>
-                    <tr>
-                        <th>
-                            <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Start: {{ task.task_id.date_start }}</td>
-                    </tr>
-                    <tr>
-                        <td>End: {{ task.task_id.date_end }}</td>
-                    </tr>
-                    <tr>
-                        <td>Description: {{ task.task_id.description }}</td>
-                    </tr>
-                </table>
-            {% endif %}
-        {% endfor %}
-        <table>
-            <tr>
-               
-            </tr>
-        </table>
-    </div>
-    <div class="table">
+    <div class="table1">
         <p class="heading">Pending</p>
         {% for task in tasks_user %}
             {% if task.task_id.status == 'pending' %}
-            <table>
-                    <tr>
-                        <th>
-                            <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Start: {{ task.task_id.date_start }}</td>
-                    </tr>
-                    <tr>
-                        <td>End: {{ task.task_id.date_end }}</td>
-                    </tr>
-                    <tr>
-                        <td>Description: {{ task.task_id.description }}</td>
-                    </tr>
+            <table class="t">
+                <tr>
+                    <th>
+                        <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Project: {{ task.task_id.project_id.title }}</td>
+                </tr>
+                <tr>
+                    <td>Start: {{ task.task_id.date_start }}</td>
+                </tr>
+                <tr>
+                    <td>End: {{ task.task_id.date_end }}</td>
+                </tr>
+                <tr>
+                    <td>Description: {{ task.task_id.description }}</td>
+                </tr>
             </table>
             {% endif %}
         {% endfor %}
     </div>
-    <div class="table">
+    <div class="table1">
         <p class="heading">In progress</p>
         {% for task in tasks_user %}
             {% if task.task_id.status == 'in progress' %}
-                <table>
+                <table class="t">
                     <tr>
                         <th>
                             <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
+                        <td>Project: {{ task.task_id.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.task_id.date_start }}</td>
@@ -89,44 +55,18 @@
             {% endif %}
         {% endfor %}
     </div>
-     <div class="table">
+     <div class="table1">
         <p class="heading">Review</p>
         {% for task in tasks_user %}
             {% if task.task_id.status == 'review' %}
-                <table>
+                <table class="t">
                     <tr>
                         <th>
                             <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Start: {{ task.task_id.date_start }}</td>
-                    </tr>
-                    <tr>
-                        <td>End: {{ task.task_id.date_end }}</td>
-                    </tr>
-                    <tr>
-                        <td>Description: {{ task.task_id.description }}</td>
-                    </tr>
-                                    </table>
-            {% endif %}
-        {% endfor %}
-    </div>
-    <div class="table">
-        <p class="heading">Done</p>
-        {% for task in tasks_user %}
-            {% if task.task_id.status == 'done' %}
-                <table>
-                    <tr>
-                        <th>
-                            <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Project id: {{ task.task_id.project_id }}</td>
+                        <td>Project: {{ task.task_id.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.task_id.date_start }}</td>
@@ -138,10 +78,17 @@
                         <td>Description: {{ task.task_id.description }}</td>
                     </tr>
                 </table>
-            <table>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="table1">
+        <p class="heading">Done</p>
+        {% for task in tasks_user %}
+            {% if task.task_id.status == 'done' %}
+                <table class="t">
                     <tr>
                         <th>
-                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                            <a href="{% url 'tasks:tasks:detail' task.task_id.id %}">{{ task.task_id.title }}</a>
                         </th>
                     </tr>
                     <tr>
@@ -161,17 +108,52 @@
         {% endfor %}
     </div>
 </div>
-{% elif tasks %}
+
+{% elif user_type == 2 %}
+<div class="container">
+    <div class="table1">
+            <p class="heading">New</p>
+            {% for task in tasks %}
+                {% if task.status == 'new' %}
+                    <table class="t">
+                        <tr>
+                            <th>
+                                <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Project: {{ task.project_id.title }}</td>
+                        </tr>
+                        <tr>
+                            <td>Start: {{ task.date_start }}</td>
+                        </tr>
+                        <tr>
+                            <td>End: {{ task.date_end }}</td>
+                        </tr>
+                        <tr>
+                            <td>Description: {{ task.description }}</td>
+                        </tr>
+                    </table>
+                {% endif %}
+            {% endfor %}
+            <table>
+                <tr>
+                   <td><a href="{% url 'tasks:tasks:create' %}" class="addnew">Add new</a></td>
+                </tr>
+            </table>
+    </div>
+    <div class="table1">
+        <p class="heading">In progress</p>
         {% for task in tasks %}
-            {% if task.status == 'new' or task.status == 'review' %}
-                <table>
+            {% if task.status == 'in progress' %}
+                <table class="t">
                     <tr>
                         <th>
                             <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
                         </th>
                     </tr>
                     <tr>
-                        <td>Project id: {{ task.project_id }}</td>
+                        <td>Project: {{ task.project_id.title }}</td>
                     </tr>
                     <tr>
                         <td>Start: {{ task.date_start }}</td>
@@ -182,21 +164,67 @@
                     <tr>
                         <td>Description: {{ task.description }}</td>
                     </tr>
-                {% if task.status == 'review' %}
-                {% if user_type == 2 %}
+                </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+     <div class="table1">
+        <p class="heading">Review</p>
+        {% for task in tasks %}
+            {% if task.status == 'review' %}
+                <table class="t">
                     <tr>
-                        <td><a href="{% url 'tasks:reviews:create' task.id %}"><b>add review</b></td>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project: {{ task.project_id.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'tasks:reviews:create' task.id %}"><b>add review</b></a></td>
                     </tr>
                     <tr>
                         <td><a href="{% url 'tasks:tasks:close' task.id %}"><b>close</b></td>
                     </tr>
-                    {% endif %}
-                {% endif %}
                 </table>
             {% endif %}
         {% endfor %}
-
-
-{% else %}
-<p><strong>No tasks yet.</strong></p>
+    </div>
+    <div class="table1">
+        <p class="heading">Done</p>
+        {% for task in tasks %}
+            {% if task.status == 'done' %}
+                <table class="t">
+                    <tr>
+                        <th>
+                            <a href="{% url 'tasks:tasks:detail' task.id %}">{{ task.title }}</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Project: {{ task.project_id.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Start: {{ task.date_start }}</td>
+                    </tr>
+                    <tr>
+                        <td>End: {{ task.date_end }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: {{ task.description }}</td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
 {% endif %} {% endblock %}

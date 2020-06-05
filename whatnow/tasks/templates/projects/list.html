@@ -1,23 +1,26 @@
 {% extends 'projects/base.html' %} {% block content %}
-<a href="{% url 'tasks:projects:create' %}">Add new</a>
 
-{% if projects %}
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Description</th>
-    </tr>
-    {% for project in projects %}
-    <tr>
-        <td><a href="{% url 'tasks:projects:detail' project.id %}">{{ project.title }}</a></td>
-        <td>{{ project.date_start }}</td>
-        <td>{{ project.date_end }}</td>
-        <td>{{ project.description }}</td>
-    </tr>
-    {% endfor %}
-</table>
-{% else %}
-<p><strong>No projects yet.</strong></p>
-{% endif %} {% endblock %}
+<div class="projects">
+    {% if projects %}
+    <table class="pr">
+        <tr>
+            <th class="th">Title</th>
+            <th class="th">Start</th>
+            <th class="th">End</th>
+            <th class="th">Description</th>
+        </tr>
+        {% for project in projects %}
+        <tr>
+            <td><a href="{% url 'tasks:projects:detail' project.id %}">{{ project.title }}</a></td>
+            <td>{{ project.date_start }}</td>
+            <td>{{ project.date_end }}</td>
+            <td>{{ project.description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p><strong>No projects yet.</strong></p>
+    {% endif %} 
+    <a href="{% url 'tasks:projects:create' %}" class="addnew">Add new</a>
+</div>
+{% endblock %}
