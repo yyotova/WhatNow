@@ -33,7 +33,7 @@ Project manager:
 * Can choose a team leader.
 * Can add new tasks for a project.
 
-**Everyone can writes comments.**
+**Everyone can write comments.**
 
 ### Profile
-Every user has a profile page. There they can upload a picture, write a bio, and add more information about them.
+Every user has a profile page. There, they can upload a picture, write a bio, and add more information about them.
